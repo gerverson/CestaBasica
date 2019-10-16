@@ -1,1 +1,1 @@
-web: gunicorn CestaBasica.wsgi --log-file -
+web: gunicorn cestabasica.wsgi --log-file -
