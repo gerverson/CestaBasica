@@ -26,7 +26,7 @@ def home(request):
 
 
     # Calcula o valor total da cesta básica do último mês com todos os dados
-    text = "select evento_id, mes, ano, sum(preco) as preco from (select ct.nome, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as preco, cp.evento_id from cesta_pesquisa_preco as cp inner join cesta_produto as cs on  cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id in (select evento_id from (select count(distinct(tipo_id)) as qtdcesta, evento_id from cesta_pesquisa_preco as cp inner join cesta_produto as cc on cp.produto_id = cc.id inner join cesta_tipo as ct on ct.id = cc.tipo_id  where ct.cestabasica = 1 group by evento_id) where qtdcesta >= 12) and ct.cestabasica =1  group by ct.nome, evento_id) inner join cesta_evento as ct on evento_id = ct.id group by evento_id order by ano desc, mes desc limit 1"
+    text = "select evento_id, mes, ano, sum(preco) as preco from ( select ct.nome, avg(((cp.preco * ct.quantidade) / cs.quantidade)) as preco, cp.evento_id from cesta_pesquisa_preco as cp inner join cesta_produto as cs on cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id in ( select evento_id from ( select count(distinct(cc.tipo_id)) as qtdcesta, cp.evento_id from cesta_pesquisa_preco as cp inner join cesta_produto as cc on cp.produto_id = cc.id inner join cesta_tipo as ct on ct.id = cc.tipo_id where ct.cestabasica = 1 group by cp.evento_id ) as t where qtdcesta >= 12 ) and ct.cestabasica = 1 group by ct.nome, evento_id ) as ttt inner join cesta_evento as ct on evento_id = ct.id group by evento_id order by ano desc, mes desc limit 1"
     cursor.execute(text)
     tx =  cursor.fetchone()
     data['cesta'] = tx[3]
@@ -35,8 +35,7 @@ def home(request):
 
 
     # Calcula o valor dos produtos da cesta básica do último mês com todos os dados
-    text = "select ct.id, ct.nome, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as preco, ct.imagem, ct.cestabasica from cesta_pesquisa_preco as cp inner join cesta_produto as cs on  cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id = (select id from cesta_evento where mes = %s and ano = %s) group by ct.nome" % (
-    mes, ano)
+    text = "select ct.id, ct.nome, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as preco, ct.imagem, ct.cestabasica from cesta_pesquisa_preco as cp inner join cesta_produto as cs on  cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id = (select id from cesta_evento where mes = %s and ano = %s) group by ct.nome" % ( mes, ano)
     cursor.execute(text)
     data['ProCesta'] = cursor.fetchall()
 
@@ -66,7 +65,7 @@ def home(request):
         data['mes'] = 'Dez'
     data['ano'] = ano
 
-    # return HttpResponse(ano)
+    # return HttpResponse(txw)
     return render(request, 'home.html', data)
 
 
@@ -133,7 +132,7 @@ def entrar(request):
     if not request.user.is_authenticated:
         return render(request, 'login.html')
     else:
-        return redirect('/index')
+        return redirect('/cestabasica/index')
 
 
 @csrf_protect
@@ -146,20 +145,20 @@ def submit_login(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login_auth(request, user)
-            return redirect('/index')
+            return redirect('/cestabasica/index')
         else:
             messages.error(request, "erro")
-    return redirect('/login')
+    return redirect('/cestabasica/login')
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/cestabasica/login')
 def index(request):
     data = {}
     data['eventos'] = evento.objects.all()
     return render(request, 'index.html', data)
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/cestabasica/login')
 def dados(request, mes, ano):
     data = {}
     cursor = connection.cursor()
@@ -181,7 +180,7 @@ def dados(request, mes, ano):
     return render(request, 'data.html', data)
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/cestabasica/login')
 def lista(request, evento, super):
     data = {}
     cursor = connection.cursor()
@@ -208,7 +207,7 @@ def lista(request, evento, super):
     return render(request, 'lista.html', data)
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/cestabasica/login')
 def updados(request, id, pk):
     data = {}
     data['id'] = pk;
@@ -223,7 +222,7 @@ def updados(request, id, pk):
     # return HttpResponse(form)
     return render(request, 'updata.html', data)
 
-@login_required(login_url='/login')
+@login_required(login_url='/cestabasica/login')
 def requestprod(request, produto, evento, estabelecimeto, preco, div, boo):
     data = {}
     # data['evento'] = evento;
@@ -278,7 +277,7 @@ def requestprod(request, produto, evento, estabelecimeto, preco, div, boo):
     return render(request, 'request.html', data)
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/cestabasica/login')
 def cadevento(request, id, pk):
     data = {}
     data['id'] = pk;
@@ -302,7 +301,7 @@ def cadevento(request, id, pk):
 
 def sair(request):
     logout(request)
-    return redirect('/')
+    return redirect('/cestabasica/')
 
 
 def api(request):

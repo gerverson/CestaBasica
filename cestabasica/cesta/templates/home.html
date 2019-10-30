@@ -51,7 +51,7 @@
                 <!--                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contato</a>-->
                 <!--                </li>-->
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">Login</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/cestabasica/login">Login</a>
                 </li>
             </ul>
         </div>
@@ -64,7 +64,7 @@
         <h1 class="text-uppercase mb-0">{{mes}}/{{ano}}</h1>
         <img class="img-fluid mb-5 d-block mx-auto" width="20%" src="{% static 'img/carrinho.png' %}" alt="">
         <h2 class="font-weight-light mb-0">R$ {{cesta|floatformat:2 }}</h2>
-        <a class="btn btn-xl btn-outline-light" href="/estatistica/0/">
+        <a class="btn btn-xl btn-outline-light" href="/cestabasica/estatistica/0/">
             <i class="fas fa-history mr-2"></i>
             Histórico
         </a>
@@ -82,9 +82,9 @@
             {% if bool == 1 %}
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 filter bunarske" align="center">
                 <h4>{{nome}}</h4>
-                <img width="60" height="60" src="/{{imagem}}" alt="">
+                <img width="60" height="60" src="/cestabasica/{{imagem}}" alt="">
                 <h5>R$ {{ valor|floatformat:2 }}</h5>
-                <a class="btn btn-outline-dark" href="/estatistica/{{id}}"><h6>Histórico</h6></a>
+                <a class="btn btn-outline-dark" href="/cestabasica/estatistica/{{id}}"><h6>Histórico</h6></a>
             </div>
             {% endif %}
             {% endfor %}
@@ -96,9 +96,9 @@
             {% if bool == 0 %}
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 filter bunarske" align="center">
                 <h4>{{nome}}</h4>
-                <img width="60" height="60" src="/{{imagem}}" alt="">
+                <img width="60" height="60" src="/cestabasica/{{imagem}}" alt="">
                 <h5>R$ {{ valor|floatformat:2 }}</h5>
-                <a class="btn btn-outline-dark" href="/estatistica/{{id}}"><h6>Histórico</h6></a>
+                <a class="btn btn-outline-dark" href="/cestabasica/estatistica/{{id}}"><h6>Histórico</h6></a>
             </div>
             {% endif %}
             {% endfor %}
