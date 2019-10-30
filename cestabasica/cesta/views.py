@@ -29,43 +29,43 @@ def home(request):
     text = "select evento_id, mes, ano, sum(preco) as preco from ( select ct.nome, avg(((cp.preco * ct.quantidade) / cs.quantidade)) as preco, cp.evento_id from cesta_pesquisa_preco as cp inner join cesta_produto as cs on cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id in ( select evento_id from ( select count(distinct(cc.tipo_id)) as qtdcesta, cp.evento_id from cesta_pesquisa_preco as cp inner join cesta_produto as cc on cp.produto_id = cc.id inner join cesta_tipo as ct on ct.id = cc.tipo_id where ct.cestabasica = 1 group by cp.evento_id ) as t where qtdcesta >= 12 ) and ct.cestabasica = 1 group by ct.nome, evento_id ) as ttt inner join cesta_evento as ct on evento_id = ct.id group by evento_id order by ano desc, mes desc limit 1"
     cursor.execute(text)
     tx =  cursor.fetchone()
-    data['cesta'] = tx[3]
-    mes = tx[1]
-    ano = tx [2]
+    # data['cesta'] = tx[3]
+    # mes = tx[1]
+    # ano = tx [2]
+    #
+    #
+    # # Calcula o valor dos produtos da cesta básica do último mês com todos os dados
+    # text = "select ct.id, ct.nome, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as preco, ct.imagem, ct.cestabasica from cesta_pesquisa_preco as cp inner join cesta_produto as cs on  cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id = (select id from cesta_evento where mes = %s and ano = %s) group by ct.nome" % ( mes, ano)
+    # cursor.execute(text)
+    # data['ProCesta'] = cursor.fetchall()
+    #
+    # if mes == 1:
+    #     data['mes'] = 'Jan'
+    # elif mes == 2:
+    #     data['mes'] = 'Fev'
+    # elif mes == 3:
+    #     data['mes'] = 'Mar'
+    # elif mes == 4:
+    #     data['mes'] = 'Abr'
+    # elif mes == 5:
+    #     data['mes'] = 'Mai'
+    # elif mes == 6:
+    #     data['mes'] = 'Jun'
+    # elif mes == 7:
+    #     data['mes'] = 'Jul'
+    # elif mes == 8:
+    #     data['mes'] = 'Ago'
+    # elif mes == 9:
+    #     data['mes'] = 'Set'
+    # elif mes == 10:
+    #     data['mes'] = 'Out'
+    # elif mes == 11:
+    #     data['mes'] = 'Nov'
+    # elif mes == 12:
+    #     data['mes'] = 'Dez'
+    # data['ano'] = ano
 
-
-    # Calcula o valor dos produtos da cesta básica do último mês com todos os dados
-    text = "select ct.id, ct.nome, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as preco, ct.imagem, ct.cestabasica from cesta_pesquisa_preco as cp inner join cesta_produto as cs on  cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id = (select id from cesta_evento where mes = %s and ano = %s) group by ct.nome" % ( mes, ano)
-    cursor.execute(text)
-    data['ProCesta'] = cursor.fetchall()
-
-    if mes == 1:
-        data['mes'] = 'Jan'
-    elif mes == 2:
-        data['mes'] = 'Fev'
-    elif mes == 3:
-        data['mes'] = 'Mar'
-    elif mes == 4:
-        data['mes'] = 'Abr'
-    elif mes == 5:
-        data['mes'] = 'Mai'
-    elif mes == 6:
-        data['mes'] = 'Jun'
-    elif mes == 7:
-        data['mes'] = 'Jul'
-    elif mes == 8:
-        data['mes'] = 'Ago'
-    elif mes == 9:
-        data['mes'] = 'Set'
-    elif mes == 10:
-        data['mes'] = 'Out'
-    elif mes == 11:
-        data['mes'] = 'Nov'
-    elif mes == 12:
-        data['mes'] = 'Dez'
-    data['ano'] = ano
-
-    return HttpResponse(tx[3])
+    return HttpResponse(tx)
     # return render(request, 'home.html', data)
 
 
