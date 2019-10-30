@@ -65,8 +65,8 @@ def home(request):
         data['mes'] = 'Dez'
     data['ano'] = ano
 
-    # return HttpResponse(txw)
-    return render(request, 'home.html', data)
+    return HttpResponse(tx[3])
+    # return render(request, 'home.html', data)
 
 
 def estatistica(request, id):
