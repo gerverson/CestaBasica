@@ -35,7 +35,7 @@ def home(request):
 
 
     # Calcula o valor dos produtos da cesta básica do último mês com todos os dados
-    text = "select ct.id, ct.nome, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as preco, ct.imagem, ct.cestabasica from cesta_pesquisa_preco as cp inner join cesta_produto as cs on  cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id = (select id from cesta_evento where mes = %s and ano = %s) group by ct.nome" % ( mes, ano)
+    text = "select ct.id, ct.nome, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as preco, ct.imagem, ct.cestabasica from cesta_pesquisa_preco as cp inner join cesta_produto as cs on  cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id = (select id from cesta_evento where mes = %s and ano = %s) group by ct.nome, ct.id" % ( mes, ano)
     cursor.execute(text)
     data['ProCesta'] = cursor.fetchall()
 
