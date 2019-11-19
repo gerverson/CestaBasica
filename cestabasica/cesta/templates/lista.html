@@ -11,10 +11,10 @@
     <!--    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">-->
     <!--    <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet" type="text/css">-->
     <!--    <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">-->
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/cestabasica/static/admin/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/cestabasica/static/admin/css/dashboard.css">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="/cestabasica/static/admin/css/responsive.css">
     <meta name="robots" content="NONE,NOARCHIVE">
 </head>
 
@@ -23,16 +23,16 @@
 <div id="container">
     <div id="header">
         <div id="branding">
-            <h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+            <h1 id="site-name"><a href="/cestabasica/admin/">Django administration</a></h1>
         </div>
 
 
         <div id="user-tools">
             Welcome,
             <strong>{{ user.get_username }}</strong>.
-            <a href="/">View site</a> /
-            <a href="/admin/password_change/">Change password</a> /
-            <a href="/admin/logout/">Log out</a>
+            <a href="/cestabasica/">View site</a> /
+            <a href="/cestabasica/admin/password_change/">Change password</a> /
+            <a href="/cestabasica/admin/logout/">Log out</a>
         </div>
     </div>
     <br>
@@ -156,7 +156,7 @@
                     var ajax = new XMLHttpRequest();
 
                     // Seta tipo de requisição e URL com os parâmetros
-                    ajax.open("GET", "/request/" + produto_id + "/" + evento + "/" + sup + "/" + preco + "/" + iddiv + "/1", true);
+                    ajax.open("GET", "/cestabasica/request/" + produto_id + "/" + evento + "/" + sup + "/" + preco + "/" + iddiv + "/1", true);
 
                     // Envia a requisição
                     ajax.send();
@@ -190,7 +190,7 @@
                     var ajax = new XMLHttpRequest();
 
                     // Seta tipo de requisição e URL com os parâmetros
-                    ajax.open("GET", "/request/" + produto_id + "/" + evento + "/" + sup + "/0/" + iddiv + "/2", true);
+                    ajax.open("GET", "/cestabasica/request/" + produto_id + "/" + evento + "/" + sup + "/0/" + iddiv + "/2", true);
 
                     // Envia a requisição
                     ajax.send();

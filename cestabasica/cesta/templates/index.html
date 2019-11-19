@@ -11,10 +11,10 @@
     <!--    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">-->
     <!--    <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet" type="text/css">-->
     <!--    <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">-->
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/cestabasica/static/admin/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/cestabasica/static/admin/css/dashboard.css">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="/cestabasica/static/admin/css/responsive.css">
     <meta name="robots" content="NONE,NOARCHIVE">
 </head>
 
@@ -23,16 +23,16 @@
 <div id="container">
     <div id="header">
         <div id="branding">
-            <h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+            <h1 id="site-name"><a href="/cestabasica/admin/">Django administration</a></h1>
         </div>
 
 
         <div id="user-tools">
             Welcome,
             <strong>{{ user.get_username }}</strong>.
-            <a href="/">View site</a> /
-            <a href="/admin/password_change/">Change password</a> /
-            <a href="/admin/logout/">Log out</a>
+            <a href="/cestabasica/">View site</a> /
+            <a href="/cestabasica/admin/password_change/">Change password</a> /
+            <a href="/cestabasica/admin/logout/">Log out</a>
         </div>
     </div>
     <br>
@@ -73,37 +73,37 @@
                 {% if user.is_superuser %}
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <a href="/admin/cesta/produto/" class="btn btn-info btn-block"> <span style="font-size: 80px"
+                        <a href="/cestabasica/admin/cesta/produto/" class="btn btn-info btn-block"> <span style="font-size: 80px"
                                                                                               class="glyphicon glyphicon-barcode"></span><br><b
                                 class="h2">Produtos</b></a><br>
                     </div>
                     <div class="col-md-4 ml-3">
-                        <a href="/admin/cesta/marca/" class="btn btn-info btn-block"> <span style="font-size: 80px"
+                        <a href="/cestabasica/admin/cesta/marca/" class="btn btn-info btn-block"> <span style="font-size: 80px"
                                                                                             class="glyphicon glyphicon-gift"></span><br><b
                                 class="h2">Marcas</b></a><br>
                     </div>
                     <div class="col-md-4">
-                        <a href="/admin/cesta/tipo/" class="btn btn-info btn-block"> <span style="font-size: 80px"
+                        <a href="/cestabasica/admin/cesta/tipo/" class="btn btn-info btn-block"> <span style="font-size: 80px"
                                                                                            class="glyphicon glyphicon-th-large"></span><br><b
                                 class="h2">Tipos</b></a><br>
                     </div>
                     <div class="col-md-4">
-                        <a href="/admin/cesta/estabelecimento/" class="btn btn-info btn-block"> <span style="font-size: 80px" class="glyphicon glyphicon-shopping-cart"></span><br><b
+                        <a href="/cestabasica/admin/cesta/estabelecimento/" class="btn btn-info btn-block"> <span style="font-size: 80px" class="glyphicon glyphicon-shopping-cart"></span><br><b
                                 class="h2">Comércios</b></a><br>
                     </div>
                     <div class="col-md-4">
-                        <a href="/admin/cesta/categoria/" class="btn btn-info btn-block"> <span style="font-size: 80px" class="glyphicon glyphicon-th-list"></span><br><b
+                        <a href="/cestabasica/admin/cesta/categoria/" class="btn btn-info btn-block"> <span style="font-size: 80px" class="glyphicon glyphicon-th-list"></span><br><b
                                 class="h2">Categorias</b></a><br>
                     </div>
                     <div class="col-md-4">
-                        <a href="/admin/auth/user/" class="btn btn-info btn-block"> <span style="font-size: 80px" class="glyphicon glyphicon-user"></span><br><b
+                        <a href="/cestabasica/admin/auth/user/" class="btn btn-info btn-block"> <span style="font-size: 80px" class="glyphicon glyphicon-user"></span><br><b
                                 class="h2">Usuários</b></a><br>
                     </div>
 
                 </div>
 
 
-                <a href="/admin/" class="btn btn-info btn-block"><b
+                <a href="/cestabasica/admin/" class="btn btn-info btn-block"><b
                         class="h2">Todas as configurações</b></a>
                 {% endif %}
             </div>
