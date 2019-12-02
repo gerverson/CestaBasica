@@ -358,8 +358,8 @@ def produt(request, id):
     titulo = None
 
 
-    text = "select (select nome from cesta_tipo where id = %s) as tipo,  (select mes from cesta_evento where id = evento_id) as mes,  (select ano from cesta_evento where id = evento_id) as ano,  (select max(quantidade) as q from cesta_produto where tipo_id = %s) as qtdMerc, ct.quantidade as qtdCesta,  cu.tipo as unidade,  avg(((cp.preco * (select max(quantidade) as q from cesta_produto where tipo_id = %s)) / cs.quantidade)) as media, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as cesta from cesta_pesquisa_preco as cp inner join cesta_produto as cs on cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id inner join cesta_unidademedida as cu on cs.unidademedida_id = cu.id where produto_id in    (select id from cesta_produto where tipo_id = %s)  group by cp.evento_id, ct.id order by ano desc, mes desc;" % (
-    id, id, id, id)
+    text = "select (select nome from cesta_tipo where id = %s) as tipo, (select mes from cesta_evento where id = evento_id) as mes, (select ano from cesta_evento where id = evento_id) as ano,  (select max(quantidade) as q from cesta_produto where tipo_id = %s) as qtdMerc,  (select quantidade from cesta_tipo where id = %s) as qtdCesta,  (select cu.tipo from cesta_unidademedida as cu inner join cesta_produto as cp on cu.id = cp.unidademedida_id where tipo_id = %s limit 1) as unidade,  avg(((cp.preco * (select max(quantidade) as q from cesta_produto where tipo_id = %s)) / cs.quantidade)) as media, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as cesta   from cesta_pesquisa_preco as cp inner join cesta_produto as cs on cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id inner join cesta_unidademedida as cu on cs.unidademedida_id = cu.id where produto_id in    (select id from cesta_produto where tipo_id = %s)  group by cp.evento_id, ct.id order by ano desc, mes desc;" % (
+    id, id, id, id, id, id)
     cursor.execute(text)
     value = cursor.fetchall()
     data['Cesta'] = value
