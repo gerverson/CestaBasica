@@ -33,5 +33,5 @@ urlpatterns = [
     path('cestabasica/updata/<int:id>/<int:pk>', updados),
     path('cestabasica/relatorio', relatorio),
     path('cestabasica/api', csrf_exempt(api)),
-    # path(r'^ap', views.api.as_view()),
+    path('cestabasica/produto/<int:id>', csrf_exempt(produt)),
 ]

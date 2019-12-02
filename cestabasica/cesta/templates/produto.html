@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+</head>
+<body>
+<h1>ARROZ</h1>
+<div style="overflow-x:auto;">
+    <table border="2px">
+        <tr>
+            <th>Mês/Ano</th>
+            <th>Preço Médio ({{qtdMerc}} {{Unid}})</th>
+            <th>Preço na Cesta ({{qtdCesta}} {{Unid}})</th>
+        </tr>
+        {% for nome, mes, ano, qtdM, qtdC, um, media, cesta in Cesta %}
+        <tr>
+            <td>{{mes}}/{{ano}}</td>
+            <td>{{media |floatformat:2}}</td>
+            <td>{{cesta |floatformat:2}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

@@ -85,7 +85,7 @@ def estatistica(request, id):
         value = cursor.fetchall()
         data['Cesta'] = value
     else:
-        text = "select (select nome from cesta_tipo where id = %s) as tipo, (select mes from cesta_evento where id = evento_id) as mes, (select ano from cesta_evento where id = evento_id) as ano, avg(preco) as preco from cesta_pesquisa_preco where produto_id in (select id from cesta_produto where tipo_id = %s) group by evento_id order by ano desc, mes desc" %(id, id)
+        text = "select (select nome from cesta_tipo where id = %s) as tipo, (select mes from cesta_evento where id = evento_id) as mes, (select ano from cesta_evento where id = evento_id) as ano, avg(((cp.preco * ct.quantidade) / cs.quantidade)) as preco from cesta_pesquisa_preco as cp inner join cesta_produto as cs on cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where produto_id in  (select id from cesta_produto where tipo_id = %s) group by evento_id order by ano desc, mes desc" %(id, id)
         cursor.execute(text)
         value = cursor.fetchall()
         data['Cesta'] = value
@@ -347,3 +347,36 @@ def api(request):
     var = '%s }}' % var
 
     return HttpResponse(var)
+
+def produt(request, id):
+    cursor = connection.cursor()
+    data = {}
+    now = datetime.now()
+    ano = now.year
+    mes = now.month
+    value = None
+    titulo = None
+
+
+    text = "select (select nome from cesta_tipo where id = %s) as tipo,  (select mes from cesta_evento where id = evento_id) as mes,  (select ano from cesta_evento where id = evento_id) as ano,  (select max(quantidade) as q from cesta_produto where tipo_id = %s) as qtdMerc, ct.quantidade as qtdCesta,  cu.tipo as unidade,  avg(((cp.preco * (select max(quantidade) as q from cesta_produto where tipo_id = %s)) / cs.quantidade)) as media, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as cesta from cesta_pesquisa_preco as cp inner join cesta_produto as cs on cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id inner join cesta_unidademedida as cu on cs.unidademedida_id = cu.id where produto_id in    (select id from cesta_produto where tipo_id = %s)  group by evento_id order by ano desc, mes desc;" % (
+    id, id, id, id)
+    cursor.execute(text)
+    value = cursor.fetchall()
+    data['Cesta'] = value
+
+    qtdMerc = 0
+    qtdCesta = 0
+    Unid = ' '
+
+    for nome, mes, ano, qtdM, qtdC, um, media, cesta in value:
+        titulo = nome
+        qtdMerc = qtdM
+        qtdCesta = qtdC
+        Unid = um
+
+    data['titulo'] = titulo
+    data['qtdMerc'] = qtdMerc
+    data['qtdCesta'] = qtdCesta
+    data['Unid'] = Unid
+    # return HttpResponse(data['tree'])
+    return render(request, 'produto.html', data)
