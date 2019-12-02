@@ -227,7 +227,7 @@ def requestprod(request, produto, evento, estabelecimeto, preco, div, boo):
     data = {}
     # data['evento'] = evento;
     # data['sup'] = estabelecimeto;
-    data['div'] = div;
+    data['div'] = div
 
     cursor = connection.cursor()
     # text = "select * from cesta_pesquisa_preco where estabelecimento_id = %s and evento_id = %s and produto_id = %s" % (estabelecimeto, evento, produto)
@@ -254,9 +254,10 @@ def requestprod(request, produto, evento, estabelecimeto, preco, div, boo):
         cursor.execute(text)
         prod = produto
         produto = "%s" % cursor.fetchone()
-        text = "select * from cesta_pesquisa_preco as cpp inner join cesta_produto as cp on cpp.produto_id = cp.id  where estabelecimento_id =%s and evento_id = %s  and cpp.id != '%s' and tipo_id = (select tipo_id from cesta_produto where tipo_id = %s);" % (
+        text = "select * from cesta_pesquisa_preco as cpp inner join cesta_produto as cp on cpp.produto_id = cp.id  where estabelecimento_id =%s and evento_id = %s  and cpp.id != '%s' and tipo_id = (select distinct(tipo_id) from cesta_produto where tipo_id = %s);" % (
             estabelecimeto, evento, prod, produto)
         data['prod'] = pesquisa_preco.objects.raw(text)
+        # return HttpResponse(data['prod'])
 
     elif(boo == 2):
         text = "select tipo_id from cesta_pesquisa_preco as cpp inner join cesta_produto as cp on cpp.produto_id = cp.id where cpp.id = %s" % produto
@@ -266,7 +267,7 @@ def requestprod(request, produto, evento, estabelecimeto, preco, div, boo):
         # cursor.execute(text)
         pesquisa_preco.objects.filter(id=produto).delete()
         produto = "%s" % cursor.fetchone()
-        text = "select * from cesta_pesquisa_preco as cpp inner join cesta_produto as cp on cpp.produto_id = cp.id  where estabelecimento_id =%s and evento_id = %s  and cpp.id != '%s' and tipo_id = (select tipo_id from cesta_produto where tipo_id = %s);" % (
+        text = "select * from cesta_pesquisa_preco as cpp inner join cesta_produto as cp on cpp.produto_id = cp.id  where estabelecimento_id =%s and evento_id = %s  and cpp.id != '%s' and tipo_id = (select distinct(tipo_id) from cesta_produto where tipo_id = %s);" % (
         estabelecimeto, evento, prod, produto)
         data['prod'] = pesquisa_preco.objects.raw(text)
 
