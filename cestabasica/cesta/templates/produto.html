@@ -8,6 +8,7 @@
 <h1>{{titulo}}</h1>
 <div style="overflow-x:auto;">
     <table border="2px">
+        {% if typ == 2 %}
         <tr>
             <th>Mês/Ano</th>
             <th>Preço Médio ({{qtdMerc}} {{Unid}})</th>
@@ -20,6 +21,19 @@
             <td>{{cesta |floatformat:2}}</td>
         </tr>
         {% endfor %}
+        {% endif %}
+        {% if typ == 1 %}
+        <tr>
+            <th>Mês/Ano</th>
+            <th>Preço da Cesta</th>
+        </tr>
+        {% for mes, ano, preco in Cesta %}
+        <tr>
+            <td>{{mes}}/{{ano}}</td>
+            <td>{{preco |floatformat:2}}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
     </table>
 </div>
 </body>
