@@ -380,3 +380,6 @@ def produt(request, id):
     data['Unid'] = Unid
     # return HttpResponse(data['tree'])
     return render(request, 'produto.html', data)
+
+def privacidade(request):
+    return render(request, 'privacidade.html')
