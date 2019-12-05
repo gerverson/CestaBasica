@@ -32,7 +32,7 @@ urlpatterns = [
     path('cestabasica/cad/<int:id>/<int:pk>', cadevento),
     path('cestabasica/updata/<int:id>/<int:pk>', updados),
     path('cestabasica/relatorio', relatorio),
-    path('cestabasica/privacidade', privacidade),
+    path('cestabasica/privacidade', csrf_exempt(privacidade)),
     path('cestabasica/api', csrf_exempt(api)),
     path('cestabasica/produto/<int:id>', csrf_exempt(produt)),
 ]

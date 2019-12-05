@@ -133,7 +133,7 @@ def relatorio(request):
     value = cursor.fetchall()
     data['meses'] = value
 
-    text = "select ct.nome, evento_id, avg(preco) as preco from cesta_pesquisa_preco as cpp inner join cesta_produto as cp on cpp.produto_id = cp.id inner join cesta_tipo as ct on cp.tipo_id = ct.id group by cpp.evento_id,ct.id order by ct.nome"
+    text = "select ct.nome, evento_id, avg(((cpp.preco * ct.quantidade) / cp.quantidade)) as preco from cesta_pesquisa_preco as cpp inner join cesta_produto as cp on cpp.produto_id = cp.id inner join cesta_tipo as ct on cp.tipo_id = ct.id group by cpp.evento_id,ct.id order by ct.nome"
     cursor.execute(text)
     value = cursor.fetchall()
     data['categoria'] = value
@@ -327,17 +327,17 @@ def api(request):
     cursor = connection.cursor()
     data = {}
 
-    text = "select * from cesta_evento where id in (select distinct(evento_id) from cesta_pesquisa_preco) order by ano desc, mes desc"
+    text = "select id, mes, ano from cesta_evento where id in (select distinct(evento_id) from cesta_pesquisa_preco) order by ano desc, mes desc"
     cursor.execute(text)
     value = cursor.fetchall()
     data['meses'] = value
 
-    text = "select ct.nome, evento_id, avg(preco) as preco from cesta_pesquisa_preco as cpp inner join cesta_produto as cp on cpp.produto_id = cp.id inner join cesta_tipo as ct on cp.tipo_id = ct.id group by cpp.evento_id,ct.id order by ct.nome"
+    text = "select ct.nome, evento_id, avg(((cpp.preco * ct.quantidade) / cp.quantidade)) as preco from cesta_pesquisa_preco as cpp inner join cesta_produto as cp on cpp.produto_id = cp.id inner join cesta_tipo as ct on cp.tipo_id = ct.id group by cpp.evento_id,ct.id order by ct.nome"
     cursor.execute(text)
     value = cursor.fetchall()
     data['categoria'] = value
 
-    text = "select evento_id, sum(preco) as preco from (select ct.nome, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as preco, cp.evento_id from cesta_pesquisa_preco as cp inner join cesta_produto as cs on  cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id in (select evento_id from (select count(distinct(tipo_id)) as qtdcesta, evento_id from cesta_pesquisa_preco as cp inner join cesta_produto as cc on cp.produto_id = cc.id inner join cesta_tipo as ct on ct.id = cc.tipo_id  where ct.cestabasica = 1 group by evento_id) where qtdcesta >= 12) and ct.cestabasica =1  group by ct.nome, evento_id) inner join cesta_evento as ct on evento_id = ct.id group by evento_id"
+    text = "select evento_id, sum(preco) as preco from (select ct.nome, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as preco, cp.evento_id from cesta_pesquisa_preco as cp inner join cesta_produto as cs on cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id in ( select evento_id from ( select count(distinct(cc.tipo_id)) as qtdcesta, cp.evento_id from cesta_pesquisa_preco as cp inner join cesta_produto as cc on cp.produto_id = cc.id inner join cesta_tipo as ct on ct.id = cc.tipo_id where ct.cestabasica = 1 group by cp.evento_id ) as t where qtdcesta >= 12 ) and ct.cestabasica = 1 group by ct.nome, evento_id ) as ttt inner join cesta_evento as ct on evento_id = ct.id group by evento_id"
     cursor.execute(text)
     value = cursor.fetchall()
     data['cesta'] = value
