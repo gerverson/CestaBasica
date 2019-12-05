@@ -412,3 +412,6 @@ def produt(request, id):
 
 def privacidade(request):
     return render(request, 'privacidade.html')
+
+def metodologia(request):
+    return render(request, 'metodologia.html')
