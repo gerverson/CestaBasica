@@ -12,7 +12,6 @@ table {
 
 th, td {
   text-align: left;
-  padding: 8px;
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
@@ -38,8 +37,8 @@ th {
         {% for nome, mes, ano, qtdM, qtdC, um, media, cesta in Cesta %}
         <tr>
             <td>{{mes}}/{{ano}}</td>
-            <td>{{media |floatformat:2}}</td>
-            <td>{{cesta |floatformat:2}}</td>
+            <td>R$ {{media |floatformat:2}}</td>
+            <td>R$ {{cesta |floatformat:2}}</td>
         </tr>
         {% endfor %}
         {% endif %}
