@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <title>Produtos</title>
 </head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+.algerian {
+    text-shadow: 1px 1px 0 #FFFFFF, 2px 2px 0 #000000;
+}
+</style>
 <body>
-<h1>{{titulo}}</h1>
+<h1 align="center" class="algerian">{{titulo}}</h1>
 <div style="overflow-x:auto;">
     <table border="2px">
         {% if typ == 2 %}
