@@ -30,15 +30,15 @@ th {
     <table border="2px">
         {% if typ == 2 %}
         <tr>
-            <th>Mês/Ano</th>
-            <th>Preço Médio ({{qtdMerc}} {{Unid}})</th>
-            <th>Preço na Cesta ({{qtdCesta}} {{Unid}})</th>
+            <th style=" text-align: center;">Mês/Ano</th>
+            <th style=" text-align: center;">Preço Médio ({{qtdMerc}} {{Unid}})</th>
+            <th style=" text-align: center;">Preço na Cesta ({{qtdCesta}} {{Unid}})</th>
         </tr>
         {% for nome, mes, ano, qtdM, qtdC, um, media, cesta in Cesta %}
         <tr>
-            <td>{{mes}}/{{ano}}</td>
-            <td>R$ {{media |floatformat:2}}</td>
-            <td>R$ {{cesta |floatformat:2}}</td>
+            <td style="padding: 8px;">{{mes}}/{{ano}}</td>
+            <td style="padding: 8px;">R$ {{media |floatformat:2}}</td>
+            <td style="padding: 8px;">R$ {{cesta |floatformat:2}}</td>
         </tr>
         {% endfor %}
         {% endif %}
