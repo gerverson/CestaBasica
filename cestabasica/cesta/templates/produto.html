@@ -23,12 +23,15 @@ th {
 .algerian {
     text-shadow: 1px 1px 0 #FFFFFF, 2px 2px 0 #000000;
 }
+
+
 </style>
 <body>
 <h1 align="center" class="algerian">{{titulo}}</h1>
 <div style="overflow-x:auto;">
+
+    {% if typ == 2 %}
     <table border="2px">
-        {% if typ == 2 %}
         <tr>
             <th style=" text-align: center;">Mês/Ano</th>
             <th style=" text-align: center;">Preço Médio ({{qtdMerc}} {{Unid}})</th>
@@ -41,20 +44,36 @@ th {
             <td style="padding: 8px;">R$ {{cesta |floatformat:2}}</td>
         </tr>
         {% endfor %}
-        {% endif %}
-        {% if typ == 1 %}
+    </table>
+    <br>
+    <table border="2px">
         <tr>
-            <th>Mês/Ano</th>
-            <th>Preço da Cesta</th>
+            <th style=" text-align: center;">Produtos</th>
+            <th style=" text-align: center;">Preço Médio</th>
+        </tr>
+        {% for nome, marca, preco, quan, uni in pro %}
+        <tr>
+            <td style="padding: 8px;">{{nome}} {{marca}} {{quan}}{{uni}}</td>
+            <td style="padding: 8px;">R$ {{preco |floatformat:2}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    {% if typ == 1 %}
+    <table border="2px">
+        <tr>
+            <th style=" text-align: center;">Mês/Ano</th>
+            <th style=" text-align: center;">Preço da Cesta</th>
         </tr>
         {% for mes, ano, preco in Cesta %}
         <tr>
-            <td>{{mes}}/{{ano}}</td>
-            <td>{{preco |floatformat:2}}</td>
+            <td style="padding: 8px;">{{mes}}/{{ano}}</td>
+            <td style="padding: 8px;">R$ {{preco |floatformat:2}}</td>
         </tr>
         {% endfor %}
-        {% endif %}
     </table>
+    {% endif %}
+
 </div>
 </body>
 </html>
