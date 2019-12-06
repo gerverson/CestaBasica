@@ -62,7 +62,127 @@
 
 <section class="portfolio" id="portfolio">
     <div class="container">
+        <h1>Metodologia de Pesquisa da Cesta Básica</h1>
 
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>CESTA BÁSICA</th>
+                    <th>ALIMENTAÇÃO COMPLEMENTAR</th>
+                    <th>HIGIENE PESSOAL</th>
+                    <th>LIMPEZA/COZINHA</th>
+                </tr>
+                <tr>
+                    <td>Carne 4,5 Kg</td>
+                    <td>Bolacha salgada 400 g</td>
+                    <td>Papel higiênico 80 M</td>
+                    <td>Sabão em pó 500 Kg</td>
+                </tr>
+                <tr>
+                    <td>Leite 6,0 L</td>
+                    <td>Macarrão 500 g</td>
+                    <td>Creme dental 90 g</td>
+                    <td>Sabão em barra 400 g</td>
+                </tr>
+                <tr>
+                    <td>Feijão 4,5 Kg</td>
+                    <td>Ovos 8 unid.</td>
+                    <td>Sabonete 225 g</td>
+                    <td>Água sanitária 500 mL</td>
+                </tr>
+                <tr>
+                    <td>Arroz 3,6 Kg</td>
+                    <td>Frango 1,2 Kg</td>
+                    <td>Absorvente 10 Unid.</td>
+                    <td>Detergente 300 mL</td>
+                </tr>
+                <tr>
+                    <td>Farinha 3,0 Kg</td>
+                    <td>Sal 125 g</td>
+                    <td>Desodorante spray 150 mL</td>
+                    <td>Desinfetante 500 mL</td>
+                </tr>
+                <tr>
+                    <td>Legumes (Tomate) 12,0 Kg</td>
+                    <td>Extrato de tomate 150 g</td>
+                    <td>Lâmina de barbear 4 Unid.</td>
+                    <td>Esponja de aço 2 Pacotes/16 unid.</td>
+                </tr>
+                <tr>
+                    <td>Pão francês 6,0 Kg</td>
+                    <td>Vinagre 240 mL</td>
+                    <td></td>
+                    <td>Fósforos 3 Caixa</td>
+                </tr>
+                <tr>
+                    <td>Café em pó 300 g</td>
+                    <td>Batata 6,0 Kg</td>
+                    <td></td>
+                    <td>Gás de cozinha 5.2 Kg</td>
+                </tr>
+                <tr>
+                    <td>Frutas (Banana) 90 Unid.</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Açúcar 3,0 Kg</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Banha/Óleo 750 mL</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Manteiga 750 g</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <p style=" text-align: justify">
+            Os produtos presentes da tabela foram selecionados com base na tabela
+            de provisões mínimas estipuladas pelo Decreto Lei n◦ 399 de 1938 para o cálculo da
+            cesta básica. Para complementar a pesquisa com mais produtos foram incluídos na
+            pesquisa outros produtos que também são consumidos pela população da cidade e que
+            se encontram também nas pesquisas da Fundação <a target="_blank"
+                                                             href="https://www.procon.sp.gov.br/pesquisa-de-cesta-basica/">PROCON
+            SP</a> e do <a target="_blank"
+                           href="https://www.portal.ap.gov.br/">PROCON/AP</a>.<br>
+            Orientado pela metodologia do <a target="_blank"
+                                             href="https://www.dieese.org.br/metodologia/metodologiaCestaBasica.pdf">DIEESE</a>
+            e seguindo a lista de produtos da
+            tabela os alunos que participaram da pesquisa visitam todo mês 10 supermercados
+            dentro da cidade de Paraíso do Tocantins, com base nas vendas dos produtos dentre
+            esses supermercados após análise com base em produtos mais vendidos são as três
+            marcas de cada tipo presente na tabela.
+            Para fazer o cálculo do preço dos produtos em relação ao percentual de consumo
+            definido na quantidade da cesta básica foi utilizado a seguinte regra de 3.</p>
+        <div style=" text-align: center">
+           <span lang="latex">
+               \frac{\textup{Base Produto}^3 }{\textup{Pre{\c c}o Produto}^1}= \frac{\textup{Base de C{\'a}lculo}^2 }{\textup{Pre{\c c}o Percentua}^4}
+            </span>
+        </div>
+        <p style=" text-align: justify">
+            <sup>1</sup> Preço Produto: Preço do produto pesquisado exatamente como no estabelecimento.<br>
+            <sup>2</sup> Base de Cálculo: Quantidade estipulada para o consumo conforme a tabela.<br>
+            <sup>3</sup> Base Produto: Quantidade do produto na
+            embalagem vendida no estabelecimento.<br>
+            <sup>4</sup> Preço Percentual: Esse é o valor calculado e corresponde ao valor do produto se comprasse exatamente a
+            quantidade estipulada na tabela.<br>
+            <br>
+            Para saber quanto seria o custo de um produto levando em conta a quantidade
+            da tabela é feito a média de todos os preços percentual do tipo do produto, esse cálculo
+            leva em conta todos os estabelecimentos que tem aquele produto. Para calcular o valor
+            da cesta básica, é necessário somar a média dos preços percentuais dos produtos na
+            tabela que estão incluídos na cesta básica.
+        </p>
     </div>
 </section>
 <footer>
@@ -79,7 +199,7 @@
         </div>
     </div>
 </footer>
-
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 

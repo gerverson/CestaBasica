@@ -43,33 +43,15 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/">Inicio</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/cestabasica/">Inicio</a>
                 </li>
-                <!--                <li class="nav-item mx-0 mx-lg-1">-->
-                <!--                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Sobre</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item mx-0 mx-lg-1">-->
-                <!--                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contato</a>-->
-                <!--                </li>-->
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">Login</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/cestabasica/login">Login</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
-<!--<header class="masthead bg-primary text-white text-center">-->
-<!--    <div class="container">-->
-<!--&lt;!&ndash;        <h1 class="text-uppercase mb-0">{{mes}}/{{ano}}</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;        <img class="img-fluid mb-5 d-block mx-auto" width="20%" src="{% static 'img/carrinho.png' %}" alt="">&ndash;&gt;-->
-<!--        <h2 class="font-weight-light mb-0">Cesta Básica</h2>-->
-<!--&lt;!&ndash;        <a class="btn btn-xl btn-outline-light" href="/estatistica/0/">&ndash;&gt;-->
-<!--&lt;!&ndash;            <i class="fas fa-history mr-2"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;            Histórico&ndash;&gt;-->
-<!--&lt;!&ndash;        </a>&ndash;&gt;-->
-<!--    </div>-->
-<!--</header>-->
 <br><br>
 
 
@@ -79,7 +61,7 @@
             <h1>{{titulo}}</h1>
         </header>
         <div class="row">
-<!--            <h4 class="text-center text-uppercase text-secondary mb-0">(Versão Beta - Todos os dados não são reais)</h4>-->
+            <!--            <h4 class="text-center text-uppercase text-secondary mb-0">(Versão Beta - Todos os dados não são reais)</h4>-->
             {% for id, mes, ano in meses %}
             <!--            {{mes}} - {{ano}}-->
             <table class="table table-bordered">
@@ -149,15 +131,12 @@
                 </tbody>
             </table>
             {% endfor %}
-
-            <!--            {% for nome, evento, preco in categoria %}-->
-
-
-            <!--            {{nome}} - {{preco}}<br>-->
-            <!--            {% endfor %}-->
-
         </div>
     </div>
+    <div style="text-align:center">
+        <a href="/cestabasica/api">Os dados também estão disponíveis via API.</a>
+    </div>
+
 </section>
 
 
