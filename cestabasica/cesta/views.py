@@ -35,7 +35,7 @@ def home(request):
 
 
     # Calcula o valor dos produtos da cesta básica do último mês com todos os dados
-    text = "select ct.id, ct.nome, avg(((cp.preco*ct.quantidade)/cs.quantidade)) as preco, ct.imagem, ct.cestabasica from cesta_pesquisa_preco as cp inner join cesta_produto as cs on  cp.produto_id = cs.id inner join cesta_tipo as ct on cs.tipo_id = ct.id where cp.evento_id = (select id from cesta_evento where mes = %s and ano = %s) group by ct.nome, ct.id" % ( mes, ano)
+    text = "select id, nome, cestabasica from cesta_tipo order by nome"
     cursor.execute(text)
     data['ProCesta'] = cursor.fetchall()
 
@@ -401,11 +401,11 @@ def produt(request, id):
             Unid = um
             break
 
-        text = "select ct.nome, cm.nome, avg(cpp.preco), cp.quantidade, cu.tipo from cesta_pesquisa_preco as cpp inner join cesta_produto as cp on cp.id = cpp.produto_id inner join cesta_marca as cm on cp.marca_id = cm.id inner join cesta_tipo as ct on cp.tipo_id = ct.id inner join cesta_unidademedida as cu on cp.unidademedida_id = cu.id where cpp.evento_id = (select ce.id from cesta_pesquisa_preco as cpp inner join cesta_evento as ce on cpp.evento_id = ce.id where cpp.produto_id in (select cp.id from cesta_tipo as ct inner join cesta_produto cp on ct.id = cp.tipo_id where ct.id = %s) order by ce.ano desc, ce.mes desc limit 1) and cp.tipo_id = %s group by cp.id;" % (
-            id, id)
-        cursor.execute(text)
-        value = cursor.fetchall()
-        data['pro'] = value
+        # text = "select ct.nome, cm.nome, avg(cpp.preco), cp.quantidade, cu.tipo from cesta_pesquisa_preco as cpp inner join cesta_produto as cp on cp.id = cpp.produto_id inner join cesta_marca as cm on cp.marca_id = cm.id inner join cesta_tipo as ct on cp.tipo_id = ct.id inner join cesta_unidademedida as cu on cp.unidademedida_id = cu.id where cpp.evento_id = (select ce.id from cesta_pesquisa_preco as cpp inner join cesta_evento as ce on cpp.evento_id = ce.id where cpp.produto_id in (select cp.id from cesta_tipo as ct inner join cesta_produto cp on ct.id = cp.tipo_id where ct.id = %s) order by ce.ano desc, ce.mes desc limit 1) and cp.tipo_id = %s group by cp.id;" % (
+        #     id, id)
+        # cursor.execute(text)
+        # value = cursor.fetchall()
+        # data['pro'] = value
 
         data['qtdMerc'] = qtdMerc
         data['qtdCesta'] = qtdCesta

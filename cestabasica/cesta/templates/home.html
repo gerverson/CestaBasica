@@ -93,12 +93,12 @@
         <h4 class="text-center text-uppercase text-secondary mb-0">Cesta Básica de Paraíso do Tocantins</h4>
         <hr class="star-dark mb-5">
         <div class="row mb-3 container">
-            {% for id, nome, valor, imagem, bool in ProCesta %}
+            {% for id, nome, bool in ProCesta %}
             {% if bool == 1 %}
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 filter bunarske" align="center">
                 <h4>{{nome}}</h4>
-                <img width="60" height="60" src="/cestabasica/{{imagem}}" alt="">
-                <h5>R$ {{ valor|floatformat:2 }}</h5>
+             <img width="60" height="60" src="{% static 'itens/' %}{{id}}.png" alt="">
+<!--                <h5>R$ {{ valor|floatformat:2 }}</h5>-->
                 <a class="btn btn-outline-dark" href="/cestabasica/estatistica/{{id}}"><h6>Histórico</h6></a>
             </div>
             {% endif %}
@@ -107,12 +107,12 @@
         <h2 class="text-center text-uppercase text-secondary mb-0">Produtos Complementares</h2>
         <hr class="star-dark mb-5">
         <div class="row mb-3 container">
-            {% for id, nome, valor, imagem, bool in ProCesta %}
+            {% for id, nome, bool in ProCesta %}
             {% if bool == 0 %}
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 filter bunarske" align="center">
                 <h4>{{nome}}</h4>
-                <img width="60" height="60" src="/cestabasica/{{imagem}}" alt="">
-                <h5>R$ {{ valor|floatformat:2 }}</h5>
+                <img width="60" height="60" src="{% static 'itens/' %}{{id}}.png" alt="">
+<!--                <h5>R$ {{ valor|floatformat:2 }}</h5>-->
                 <a class="btn btn-outline-dark" href="/cestabasica/estatistica/{{id}}"><h6>Histórico</h6></a>
             </div>
             {% endif %}
@@ -134,7 +134,7 @@
                 </p>
             </div>
             <div class="col-lg-4 mr-auto">
-                <p class="lead">A pesquisa dos preços já é feita pelo Laboratório Modelo de Administração do Campus
+                <p class="lead">A pesquisa dos preços é feita pelo curso Superior em Administração do Campus
                     Paraíso do Tocantins do IFTO. Esse sistema foi desenvolvido e é mantido pelo Laboratório de Robótica
                     e Inteligência Artificial do IFTO Campus Paraíso.</p>
             </div>

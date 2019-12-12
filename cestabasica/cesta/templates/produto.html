@@ -46,18 +46,18 @@ th {
         {% endfor %}
     </table>
     <br>
-    <table border="2px">
-        <tr>
-            <th style=" text-align: center;">Produtos</th>
-            <th style=" text-align: center;">Preço Médio</th>
-        </tr>
-        {% for nome, marca, preco, quan, uni in pro %}
-        <tr>
-            <td style="padding: 8px;">{{nome}} {{marca}} {{quan}}{{uni}}</td>
-            <td style="padding: 8px;">R$ {{preco |floatformat:2}}</td>
-        </tr>
-        {% endfor %}
-    </table>
+<!--    <table border="2px">-->
+<!--        <tr>-->
+<!--            <th style=" text-align: center;">Produtos</th>-->
+<!--            <th style=" text-align: center;">Preço Médio</th>-->
+<!--        </tr>-->
+<!--        {% for nome, marca, preco, quan, uni in pro %}-->
+<!--        <tr>-->
+<!--            <td style="padding: 8px;">{{nome}} {{marca}} {{quan}}{{uni}}</td>-->
+<!--            <td style="padding: 8px;">R$ {{preco |floatformat:2}}</td>-->
+<!--        </tr>-->
+<!--        {% endfor %}-->
+<!--    </table>-->
     {% endif %}
     {% if typ == 1 %}
     <table border="2px">
