@@ -1,0 +1,7 @@
+git remote add dokku dokku@10.9.10.12:cesta
+
+
+git push dokku --force
+
+
+colocar os arquivos em ~/.ssh
