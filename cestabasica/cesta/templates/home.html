@@ -73,18 +73,22 @@
 <br>
 <!-- Portfolio Grid Section -->
 <div style="text-align: center">
-            <a class="btn btn-lg btn-success big-btn android-btn" href="https://play.google.com/store/apps/details?id=com.ifto.reeeapps.cestabasicaparaiso">
-                <div class="row">
-                    <div class="text-center">
-                        <img width="60px" class="pull-left"
+    <a class="btn btn-lg btn-success big-btn android-btn"
+       href="https://play.google.com/store/apps/details?id=com.ifto.reeeapps.cestabasicaparaiso">
+        <div class="row">
+            <div class="text-center">
+                <img width="60px" class="pull-left"
                      src="http://www.userlogos.org/files/logos/jumpordie/google_play_04.png">
-                    </div>
-                    <div ><h3 class="text-uppercase text-secondary mb-0 text-white">Disponível no Google Play</h3>
-                </div>
-                </div>
-            </a>
-
+            </div>
+            <div>
+                <h3 class="text-uppercase text-secondary mb-0"><span
+                        style="color:white;">Disponível no Google Play</span>
+                </h3>
+            </div>
         </div>
+    </a>
+
+</div>
 
 <section class="portfolio" id="portfolio">
     <div class="container">
@@ -97,8 +101,8 @@
             {% if bool == 1 %}
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 filter bunarske" align="center">
                 <h4>{{nome}}</h4>
-             <img width="60" height="60" src="{% static 'itens/' %}{{id}}.png" alt="">
-<!--                <h5>R$ {{ valor|floatformat:2 }}</h5>-->
+                <img width="60" height="60" src="{% static 'itens/' %}{{id}}.png" alt="">
+                <!--                <h5>R$ {{ valor|floatformat:2 }}</h5>-->
                 <a class="btn btn-outline-dark" href="/cestabasica/estatistica/{{id}}"><h6>Histórico</h6></a>
             </div>
             {% endif %}
@@ -112,7 +116,7 @@
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 filter bunarske" align="center">
                 <h4>{{nome}}</h4>
                 <img width="60" height="60" src="{% static 'itens/' %}{{id}}.png" alt="">
-<!--                <h5>R$ {{ valor|floatformat:2 }}</h5>-->
+                <!--                <h5>R$ {{ valor|floatformat:2 }}</h5>-->
                 <a class="btn btn-outline-dark" href="/cestabasica/estatistica/{{id}}"><h6>Histórico</h6></a>
             </div>
             {% endif %}
